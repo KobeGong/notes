@@ -1,0 +1,13 @@
+
+status_t OpenGLRenderer::drawRenderNode(RenderNode* renderNode, Rect& dirty, int32_t replayFlags)
+函数位于frameworks/base/libs/hwui/OpenGLRenderer.cpp中
+
+void RenderNode::computeOrderingImpl(
+        DrawRenderNodeOp* opState,
+        const SkPath* outlineOfProjectionSurface,
+        Vector<DrawRenderNodeOp*>* compositedChildrenOfProjectionSurface,
+        const mat4* transformFromProjectionSurface)
+函数位于framework/base/libs/hwui/RenderNode.cpp中
+        
+void RenderNode::applyViewPropertyTransforms(mat4& matrix, bool true3dTransform)
+函数位于framework/base/libs/hwui/RenderNode.cpp中
