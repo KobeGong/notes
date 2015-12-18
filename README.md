@@ -4,3 +4,5 @@
 [Vim光标移动](https://github.com/KobeGong/notes/blob/master/Vim%20%E5%85%89%E6%A0%87%E7%A7%BB%E5%8A%A8.md)
 
 [View Elevation](https://github.com/KobeGong/notes/blob/master/View%20Elevation)
+
+[Java外部类访问静态内部类的原因](https://github.com/KobeGong/notes/blob/master/Java%E5%A4%96%E9%83%A8%E7%B1%BB%E8%AE%BF%E9%97%AE%E9%9D%99%E6%80%81%E5%86%85%E9%83%A8%E7%B1%BB%E7%9A%84%E5%8E%9F%E5%9B%A0.markdown)
