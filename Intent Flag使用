@@ -1,0 +1,2 @@
+＊ FLAG_ACTIVITY_CLEAR_TOP
+  如果Intent设置了这个flag，如果即将启动的Activity已经存在栈中，那么在栈中的位置处于这个Activity上面的Activity都会finish掉，如果Intent还设置FLAG_ACTIVITY_SINGLE_TOP同时在Activity的launchMode为standard，该Acitivty也会finish。
