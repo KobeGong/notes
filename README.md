@@ -10,3 +10,9 @@
 [Bitmap对象的创建过程](https://github.com/KobeGong/notes/blob/master/Bitmap%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%88%9B%E5%BB%BA%E8%BF%87%E7%A8%8B.md)
 
 [Intent Flag使用](https://github.com/KobeGong/notes/blob/master/Intent%20Flag%E4%BD%BF%E7%94%A8)
+
+[make中文手册](https://github.com/KobeGong/notes/blob/master/make%E4%B8%AD%E6%96%87%E6%89%8B%E5%86%8C.md)
+
+[cc命令解说](https://github.com/KobeGong/notes/blob/master/cc%E5%91%BD%E4%BB%A4%E8%A7%A3%E8%AF%B4.md)
+
+[adb_root](https://github.com/KobeGong/notes/blob/master/adb_root.md)
