@@ -1489,13 +1489,12 @@ $(patsubst <pattern>,<replacement>,<text> )
 示例：$(patsubst %.c,%.o,x.c.c bar.c)把字串"x.c.c bar.c"符合模式[%.c]的单词替换成[%.o]，返回结果是"x.c.o bar.o"
 
 备注：这和我们前面"变量章节"说过的相关知识有点相似。如：
-
-"$(var:&lt;pattern&gt;=&lt;replacement&gt; )"相当于"$(patsubst &lt;pattern&gt;,&lt;replacement&gt;,$(var))"，而"$(var: &lt;suffix&gt;=&lt;replacement&gt; )"则相当于"$(patsubst %&lt;suffix&gt;,%&lt;replacement&gt;,$(var))"。
+`$(var:&lt;pattern&gt;=&lt;replacement&gt; )`相当于`$(patsubst &lt;pattern&gt;,&lt;replacement&gt;,$(var))`，而`$(var: &lt;suffix&gt;=&lt;replacement&gt; )`则相当于`$(patsubst %&lt;suffix&gt;,%&lt;replacement&gt;,$(var))`。
 
 例如有：objects = foo.o bar.o baz.o，那么，"$(objects:.o=.c)"和"$(patsubst %.o,%.c,$(objects))"是一样的。
-
+```
 $(strip &lt;string&gt; )
-
+```
 名称：去空格函数--strip。
 
 功能：去掉&lt;string&gt;字串中开头和结尾的空字符。
@@ -1503,9 +1502,9 @@ $(strip &lt;string&gt; )
 返回：返回被去掉空格的字符串值。
 
 示例：$(strip a b c )把字串"a b c "去到开头和结尾的空格，结果是"a b c"。
-
+```
 $(findstring &lt;find&gt;,&lt;in&gt; )
-
+```
 名称：查找字符串函数--findstring。
 
 功能：在字串&lt;in&gt;中查找&lt;find&gt;字串。
@@ -1513,9 +1512,9 @@ $(findstring &lt;find&gt;,&lt;in&gt; )
 返回：如果找到，那么返回&lt;find&gt;，否则返回空字符串。
 
 示例：$(findstring a,a b c)返回"a"字符串，$(findstring a,b c)返回""字符串（空字符串）
-
+```
 $(filter &lt;pattern...&gt;,&lt;text&gt; )
-
+```
 名称：过滤函数--filter。
 
 功能：以&lt;pattern&gt;模式过滤&lt;text&gt;字符串中的单词，保留符合模式&lt;pattern&gt;的单词。可以有多个模式。
