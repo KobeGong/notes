@@ -1493,7 +1493,7 @@ $(patsubst <pattern>,<replacement>,<text> )
 
 例如有：objects = foo.o bar.o baz.o，那么，"$(objects:.o=.c)"和"$(patsubst %.o,%.c,$(objects))"是一样的。
 ```
-$(strip &lt;string&gt; )
+$(strip <string> )
 ```
 名称：去空格函数--strip。
 
@@ -1503,7 +1503,7 @@ $(strip &lt;string&gt; )
 
 示例：$(strip a b c )把字串"a b c "去到开头和结尾的空格，结果是"a b c"。
 ```
-$(findstring &lt;find&gt;,&lt;in&gt; )
+$(findstring <find>,<in> )
 ```
 名称：查找字符串函数--findstring。
 
@@ -1513,7 +1513,7 @@ $(findstring &lt;find&gt;,&lt;in&gt; )
 
 示例：$(findstring a,a b c)返回"a"字符串，$(findstring a,b c)返回""字符串（空字符串）
 ```
-$(filter &lt;pattern...&gt;,&lt;text&gt; )
+$(filter <pattern...>,<text> )
 ```
 名称：过滤函数--filter。
 
@@ -1544,9 +1544,9 @@ $(filter-out <pattern...>,<text> )
 objects=main1.o foo.o main2.o bar.o
 
 mains=main1.o main2.o
-
+```
 $(filter-out $(mains),$(objects)) 返回值是"foo.o bar.o"。
-
+```
 $(sort <list> )
 ```
 名称：排序函数--sort。
