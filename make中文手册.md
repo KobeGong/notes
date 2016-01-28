@@ -322,7 +322,7 @@ include <filename>
 
 filename可以是当前操作系统Shell的文件模式（可以保含路径和通配符）
 
-在 include前面可以有一些空字符，但是绝不能是[Tab]键开始。include和<filename>可以用一个或多个空格隔开。举个例子，你有这样几个Makefile：a.mk、b.mk、c.mk，还有一个文件叫foo.make，以及一个变量$(bar)，其包含了e.mk和 f.mk，那么，下面的语句：
+在 include前面可以有一些空字符，但是绝不能是[Tab]键开始。include和&lt;filename&gt;可以用一个或多个空格隔开。举个例子，你有这样几个Makefile：a.mk、b.mk、c.mk，还有一个文件叫foo.make，以及一个变量$(bar)，其包含了e.mk和 f.mk，那么，下面的语句：
 
 ```
 include foo.make *.mk $(bar)
@@ -338,7 +338,7 @@ make 命令开始时，会把找寻include所指出的其它Makefile，并把其
 
 1、如果make执行时，有"-I"或"--include-dir"参数，那么make就会在这个参数所指定的目录下去寻找。
 
-2、如果目录<prefix>/include（一般是：/usr/local/bin或/usr/include）存在的话，make也会去找。
+2、如果目录&lt;prefix&gt;/include（一般是：/usr/local/bin或/usr/include）存在的话，make也会去找。
 
 如果有文件没有找到的话，make会生成一条警告信息，但不会马上出现致命错误。它会继续载入其它的文件，一旦完成makefile的读取，make会再重试这些没有找到，或是不能读取的文件，如果还是不行，make才会出现一条致命信息。如果你想让make不理那些无法读取的文件，而继续执行，你可以在 include前加一个减号"-"。如：
 
@@ -432,7 +432,7 @@ command是命令行，如果其不与"target吐舌rerequisites"在一行，那�
 
 波浪号（"~"）字符在文件名中也有比较特殊的用途。如果是"~/test"，这就表示当前用户的$HOME目录下的test目录。而"~hchen /test"则表示用户hchen的宿主目录下的test目录。（这些都是Unix下的小知识了，make也支持）而在Windows或是MS-DOS 下，用户没有宿主目录，那么波浪号所指的目录则根据环境变量"HOME"而定。
 
-通配符代替了你一系列的文件，如"*.c"表示所以后缀为c的文件。一个需要我们注意的是，如果我们的文件名中有通配符，如："*"，那么可以用转义字符"\"，如"\\*"来表示真实的"*"字符，而不是任意长度的字符串。
+通配符代替了你一系列的文件，如"*.c"表示所以后缀为c的文件。一个需要我们注意的是，如果我们的文件名中有通配符，如："\*"，那么可以用转义字符"\\"，如"\\\*"来表示真实的"\*"字符，而不是任意长度的字符串。
 
 好吧，还是先来看几个例子吧：
 ```
@@ -470,17 +470,17 @@ VPATH = src:../headers
 
 另一个设置文件搜索路径的方法是使用make的"vpath"关键字（注意，它是全小写的），这不是变量，这是一个make的关键字，这和上面提到的那个 VPATH变量很类似，但是它更为灵活。它可以指定不同的文件在不同的搜索目录中。这是一个很灵活的功能。它的使用方法有三种：
 
-1、vpath <pattern> <directories>为符合模式<pattern>的文件指定搜索目录<directories>。
+1、vpath &lt;pattern&gt; &lt;directories&gt;为符合模式&lt;pattern&gt;的文件指定搜索目录&lt;directories&gt;。
 
-2、vpath <pattern>清除符合模式<pattern>的文件的搜索目录。
+2、vpath &lt;pattern&gt;清除符合模式&lt;pattern&gt;的文件的搜索目录。
 
 3、vpath清除所有已被设置好了的文件搜索目录。
 
-vapth 使用方法中的<pattern>需要包含"%"字符。"%"的意思是匹配零或若干字符，例如，"%.h"表示所有以".h"结尾的文件。<pattern>指定了要搜索的文件集，而<directories>则指定了<pattern>的文件集的搜索的目录。例如：
+vapth 使用方法中的&lt;pattern&gt;需要包含"%"字符。"%"的意思是匹配零或若干字符，例如，"%.h"表示所有以".h"结尾的文件。&lt;pattern&gt;指定了要搜索的文件集，而&lt;directories&gt;则指定了&lt;pattern&gt;的文件集的搜索的目录。例如：
 
 vpath %.h ../headers
 
-该语句表示，要求make在"../headers"目录下搜索所有以".h"结尾的文件。（如果某文件在当前目录没有找到的话）我们可以连续地使用vpath语句，以指定不同搜索策略。如果连续的vpath语句中出现了相同的<pattern>，或是被重复了的<pattern>，那么，make会按照vpath语句的先后顺序来执行搜索。如：
+该语句表示，要求make在"../headers"目录下搜索所有以".h"结尾的文件。（如果某文件在当前目录没有找到的话）我们可以连续地使用vpath语句，以指定不同搜索策略。如果连续的vpath语句中出现了相同的&lt;pattern&gt;，或是被重复了的&lt;pattern&gt;，那么，make会按照vpath语句的先后顺序来执行搜索。如：
 ```
 vpath %.c foo
 
@@ -592,7 +592,7 @@ target-parrtern是指明了targets的模式，也就是的目标集模式。
 
 prereq-parrterns是目标的依赖模式，它对target-parrtern形成的模式再进行一次依赖目标的定义。
 
-这样描述这三个东西，可能还是没有说清楚，还是举个例子来说明一下吧。如果我们的<target-parrtern>定义成"%.o"，意思是我们的<target>集合中都是以".o"结尾的，而如果我们的<prereq-parrterns>定义成"%.c"，意思是对<target-parrtern>所形成的目标集进行二次定义，其计算方法是，取<target-parrtern>模式中的"%"（也就是去掉了[.o]这个结尾），并为其加上[.c]这个结尾，形成的新集合。
+这样描述这三个东西，可能还是没有说清楚，还是举个例子来说明一下吧。如果我们的&lt;target-parrtern&gt;定义成"%.o"，意思是我们的&lt;target&gt;集合中都是以".o"结尾的，而如果我们的&lt;prereq-parrterns&gt;定义成"%.c"，意思是对&lt;target-parrtern&gt;所形成的目标集进行二次定义，其计算方法是，取&lt;target-parrtern&gt;模式中的"%"（也就是去掉了[.o]这个结尾），并为其加上[.c]这个结尾，形成的新集合。
 
 所以，我们的"目标模式"或是"依赖模式"中都应该有"%"这个字符，如果你的文件名中有"%"那么你可以使用反斜杠"\"进行转义，来标明真实的"%"字符。
 
@@ -1225,7 +1225,7 @@ make 运行时的系统环境变量可以在make开始运行时被载入到Makef
 
 <target ...> : overide <variable-assignment>
 ```
-<variable-assignment>可以是前面讲过的各种赋值表达式，如"="、":="、"+="或是"？="。第二个语法是针对于make命令行带入的变量，或是系统环境变量。
+&lt;variable-assignment&gt;可以是前面讲过的各种赋值表达式，如"="、":="、"+="或是"？="。第二个语法是针对于make命令行带入的变量，或是系统环境变量。
 
 这个特性非常的有用，当我们设置了这样一个变量，这个变量会作用到由这个目标所引发的所有的规则中去。如：
 ```
@@ -1348,7 +1348,7 @@ else
 
 endif
 ```
-其中<conditional-directive>表示条件关键字，如"ifeq"。这个关键字有四个。
+其中&lt;conditional-directive&gt;表示条件关键字，如"ifeq"。这个关键字有四个。
 
 第一个是我们前面所见过的"ifeq"
 ```
@@ -1370,7 +1370,7 @@ ifeq ($(strip $(foo)),)
 
 endif
 ```
-这个示例中使用了"strip"函数，如果这个函数的返回值是空（Empty），那么<text-if-empty>就生效。
+这个示例中使用了"strip"函数，如果这个函数的返回值是空（Empty），那么&lt;text-if-empty&gt;就生效。
 
 第二个条件关键字是"ifneq"。语法是：
 ```
@@ -1390,7 +1390,7 @@ ifneq '<arg1>' "<arg2>"
 ```
 ifdef <variable-name>
 ```
-如果变量<variable-name>的值非空，那到表达式为真。否则，表达式为假。当然，<variable-name>同样可以是一个函数的返回值。注意，ifdef只是测试一个变量是否有值，其并不会把变量扩展到当前位置。还是来看两个例子：
+如果变量&lt;variable-name&gt;的值非空，那到表达式为真。否则，表达式为假。当然，&lt;variable-name&gt;同样可以是一个函数的返回值。注意，ifdef只是测试一个变量是否有值，其并不会把变量扩展到当前位置。还是来看两个例子：
 
 示例一：
 ```
@@ -1430,7 +1430,7 @@ ifndef <variable-name>
 ```
 这个我就不多说了，和"ifdef"是相反的意思。
 
-在<conditional-directive>这一行上，多余的空格是被允许的，但是不能以[Tab]键做为开始（不然就被认为是命令）。而注释符"#"同样也是安全的。"else"和"endif"也一样，只要不是以[Tab]键开始就行了。
+在&lt;conditional-directive&gt;这一行上，多余的空格是被允许的，但是不能以[Tab]键做为开始（不然就被认为是命令）。而注释符"#"同样也是安全的。"else"和"endif"也一样，只要不是以[Tab]键开始就行了。
 
 特别注意的是，make是在读取Makefile时就计算条件表达式的值，并根据条件表达式的值来选择语句，所以，你最好不要把自动化变量（如"$@"等）放入条件表达式中，因为自动化变量是在运行时才有的。
 
@@ -1450,7 +1450,7 @@ $(<function> <arguments> )
 ```
 ${<function> <arguments>}
 ```
-这里，<function>就是函数名，make支持的函数不多。<arguments>是函数的参数，参数间以逗号","分隔，而函数名和参数之间以"空格"分隔。函数调用以"$"开头，以圆括号或花括号把函数名和参数括起。感觉很像一个变量，是不是？函数中的参数可以使用变量，为了风格的统一，函数和变量的括号最好一样，如使用"$(subst a,b,$(x))"这样的形式，而不是"$(subst a,b,${x})"的形式。因为统一会更清楚，也会减少一些不必要的麻烦。
+这里，&lt;function&gt;就是函数名，make支持的函数不多。&lt;arguments&gt;是函数的参数，参数间以逗号","分隔，而函数名和参数之间以"空格"分隔。函数调用以"$"开头，以圆括号或花括号把函数名和参数括起。感觉很像一个变量，是不是？函数中的参数可以使用变量，为了风格的统一，函数和变量的括号最好一样，如使用"$(subst a,b,$(x))"这样的形式，而不是"$(subst a,b,${x})"的形式。因为统一会更清楚，也会减少一些不必要的麻烦。
 
 还是来看一个示例：
 ```
@@ -1468,11 +1468,11 @@ bar:= $(subst $(space),$(comma),$(foo))
 
 #### 二、字符串处理函数
 ```
-$(subst <from>,<to>,<text> )
+$(subst &lt;from&gt;,&lt;to&gt;,&lt;text&gt; )
 ```
 名称：字符串替换函数--subst。
 
-功能：把字串<text>中的<from>字符串替换成<to>。
+功能：把字串&lt;text&gt;中的&lt;from&gt;字符串替换成&lt;to&gt;。
 
 返回：函数返回被替换过后的字符串。
 
@@ -1482,7 +1482,7 @@ $(patsubst <pattern>,<replacement>,<text> )
 ```
 名称：模式字符串替换函数--patsubst。
 
-功能：查找<text>中的单词（单词以"空格"、"Tab"或"回车""换行"分隔）是否符合模式<pattern>，如果匹配的话，则以<replacement>替换。这里，<pattern>可以包括通配符"%"，表示任意长度的字串。如果<replacement>中也包含"%"，那么，<replacement>中的这个"%"将是<pattern>中的那个"%"所代表的字串。（可以用"\"来转义，以"\%"来表示真实含义的"%"字符）
+功能：查找&lt;text&gt;中的单词（单词以"空格"、"Tab"或"回车""换行"分隔）是否符合模式&lt;pattern&gt;，如果匹配的话，则以&lt;replacement&gt;替换。这里，&lt;pattern&gt;可以包括通配符"%"，表示任意长度的字串。如果&lt;replacement&gt;中也包含"%"，那么，&lt;replacement&gt;中的这个"%"将是&lt;pattern&gt;中的那个"%"所代表的字串。（可以用"\"来转义，以"\%"来表示真实含义的"%"字符）
 
 返回：函数返回被替换过后的字符串。
 
@@ -1490,37 +1490,37 @@ $(patsubst <pattern>,<replacement>,<text> )
 
 备注：这和我们前面"变量章节"说过的相关知识有点相似。如：
 
-"$(var:<pattern>=<replacement> )"相当于"$(patsubst <pattern>,<replacement>,$(var))"，而"$(var: <suffix>=<replacement> )"则相当于"$(patsubst %<suffix>,%<replacement>,$(var))"。
+"$(var:&lt;pattern&gt;=&lt;replacement&gt; )"相当于"$(patsubst &lt;pattern&gt;,&lt;replacement&gt;,$(var))"，而"$(var: &lt;suffix&gt;=&lt;replacement&gt; )"则相当于"$(patsubst %&lt;suffix&gt;,%&lt;replacement&gt;,$(var))"。
 
 例如有：objects = foo.o bar.o baz.o，那么，"$(objects:.o=.c)"和"$(patsubst %.o,%.c,$(objects))"是一样的。
 
-$(strip <string> )
+$(strip &lt;string&gt; )
 
 名称：去空格函数--strip。
 
-功能：去掉<string>字串中开头和结尾的空字符。
+功能：去掉&lt;string&gt;字串中开头和结尾的空字符。
 
 返回：返回被去掉空格的字符串值。
 
 示例：$(strip a b c )把字串"a b c "去到开头和结尾的空格，结果是"a b c"。
 
-$(findstring <find>,<in> )
+$(findstring &lt;find&gt;,&lt;in&gt; )
 
 名称：查找字符串函数--findstring。
 
-功能：在字串<in>中查找<find>字串。
+功能：在字串&lt;in&gt;中查找&lt;find&gt;字串。
 
-返回：如果找到，那么返回<find>，否则返回空字符串。
+返回：如果找到，那么返回&lt;find&gt;，否则返回空字符串。
 
 示例：$(findstring a,a b c)返回"a"字符串，$(findstring a,b c)返回""字符串（空字符串）
 
-$(filter <pattern...>,<text> )
+$(filter &lt;pattern...&gt;,&lt;text&gt; )
 
 名称：过滤函数--filter。
 
-功能：以<pattern>模式过滤<text>字符串中的单词，保留符合模式<pattern>的单词。可以有多个模式。
+功能：以&lt;pattern&gt;模式过滤&lt;text&gt;字符串中的单词，保留符合模式&lt;pattern&gt;的单词。可以有多个模式。
 
-返回：返回符合模式<pattern>的字串。
+返回：返回符合模式&lt;pattern&gt;的字串。
 
 示例：
 ```
@@ -1536,9 +1536,9 @@ $(filter-out <pattern...>,<text> )
 ```
 名称：反过滤函数--filter-out。
 
-功能：以<pattern>模式过滤<text>字符串中的单词，去除符合模式<pattern>的单词。可以有多个模式。
+功能：以&lt;pattern&gt;模式过滤&lt;text&gt;字符串中的单词，去除符合模式&lt;pattern&gt;的单词。可以有多个模式。
 
-返回：返回不符合模式<pattern>的字串。
+返回：返回不符合模式&lt;pattern&gt;的字串。
 
 示例：
 ```
@@ -1552,21 +1552,21 @@ $(sort <list> )
 ```
 名称：排序函数--sort。
 
-功能：给字符串<list>中的单词排序（升序）。
+功能：给字符串&lt;list&gt;中的单词排序（升序）。
 
 返回：返回排序后的字符串。
 
 示例：$(sort foo bar lose)返回"bar foo lose" 。
 
-备注：sort函数会去掉<list>中相同的单词。
+备注：sort函数会去掉&lt;list&gt;中相同的单词。
 ```
 $(word <n>,<text> )
 ```
 名称：取单词函数--word。
 
-功能：取字符串<text>中第<n>个单词。（从一开始）
+功能：取字符串&lt;text&gt;中第&lt;n&gt;个单词。（从一开始）
 
-返回：返回字符串<text>中第<n>个单词。如果<n>比<text>中的单词数要大，那么返回空字符串。
+返回：返回字符串&lt;text&gt;中第&lt;n&gt;个单词。如果&lt;n&gt;比&lt;text&gt;中的单词数要大，那么返回空字符串。
 
 示例：$(word 2, foo bar baz)返回值是"bar"。
 ```
@@ -1574,9 +1574,9 @@ $(wordlist <s>,<e>,<text> )
 ```
 名称：取单词串函数--wordlist。
 
-功能：从字符串<text>中取从<s>开始到<e>的单词串。<s>和<e>是一个数字。
+功能：从字符串&lt;text&gt;中取从&lt;s&gt;开始到&lt;e&gt;的单词串。&lt;s&gt;和&lt;e&gt;是一个数字。
 
-返回：返回字符串<text>中从<s>到<e>的单词字串。如果<s>比<text>中的单词数要大，那么返回空字符串。如果<e>大于<text>的单词数，那么返回从<s>开始，到<text>结束的单词串。
+返回：返回字符串&lt;text&gt;中从&lt;s&gt;到&lt;e&gt;的单词字串。如果&lt;s&gt;比&lt;text&gt;中的单词数要大，那么返回空字符串。如果&lt;e&gt;大于&lt;text&gt;的单词数，那么返回从&lt;s&gt;开始，到&lt;text&gt;结束的单词串。
 
 示例： $(wordlist 2, 3, foo bar baz)返回值是"bar baz"。
 ```
@@ -1584,25 +1584,25 @@ $(words <text> )
 ```
 名称：单词个数统计函数--words。
 
-功能：统计<text>中字符串中的单词个数。
+功能：统计&lt;text&gt;中字符串中的单词个数。
 
-返回：返回<text>中的单词数。
+返回：返回&lt;text&gt;中的单词数。
 
 示例：$(words, foo bar baz)返回值是"3"。
 
-备注：如果我们要取<text>中最后的一个单词，我们可以这样：$(word $(words <text> ),<text> )。
+备注：如果我们要取&lt;text&gt;中最后的一个单词，我们可以这样：$(word $(words &lt;text&gt; ),&lt;text&gt; )。
 ```
 $(firstword <text> )
 ```
 名称：首单词函数--firstword。
 
-功能：取字符串<text>中的第一个单词。
+功能：取字符串&lt;text&gt;中的第一个单词。
 
-返回：返回字符串<text>的第一个单词。
+返回：返回字符串&lt;text&gt;的第一个单词。
 
 示例：$(firstword foo bar)返回值是"foo"。
 
-备注：这个函数可以用word函数来实现：$(word 1,<text> )。
+备注：这个函数可以用word函数来实现：$(word 1,&lt;text&gt; )。
 
 以上，是所有的字符串操作函数，如果搭配混合使用，可以完成比较复杂的功能。这里，举一个现实中应用的例子。我们知道，make使用"VPATH"变量来指定"依赖文件"的搜索路径。于是，我们可以利用这个搜索路径来指定编译器对头文件的搜索路径参数CFLAGS，如：
 ```
@@ -1618,9 +1618,9 @@ $(dir <names...> )
 ```
 名称：取目录函数--dir。
 
-功能：从文件名序列<names>中取出目录部分。目录部分是指最后一个反斜杠（"/"）之前的部分。如果没有反斜杠，那么返回"./"。
+功能：从文件名序列&lt;names&gt;中取出目录部分。目录部分是指最后一个反斜杠（"/"）之前的部分。如果没有反斜杠，那么返回"./"。
 
-返回：返回文件名序列<names>的目录部分。
+返回：返回文件名序列&lt;names&gt;的目录部分。
 
 示例： $(dir src/foo.c hacks)返回值是"src/ ./"。
 ```
@@ -1628,9 +1628,9 @@ $(notdir <names...> )
 ```
 名称：取文件函数--notdir。
 
-功能：从文件名序列<names>中取出非目录部分。非目录部分是指最后一个反斜杠（"/"）之后的部分。
+功能：从文件名序列&lt;names&gt;中取出非目录部分。非目录部分是指最后一个反斜杠（"/"）之后的部分。
 
-返回：返回文件名序列<names>的非目录部分。
+返回：返回文件名序列&lt;names&gt;的非目录部分。
 
 示例： $(notdir src/foo.c hacks)返回值是"foo.c hacks"。
 ```
@@ -1638,9 +1638,9 @@ $(suffix <names...> )
 ```
 名称：取后缀函数--suffix。
 
-功能：从文件名序列<names>中取出各个文件名的后缀。
+功能：从文件名序列&lt;names&gt;中取出各个文件名的后缀。
 
-返回：返回文件名序列<names>的后缀序列，如果文件没有后缀，则返回空字串。
+返回：返回文件名序列&lt;names&gt;的后缀序列，如果文件没有后缀，则返回空字串。
 
 示例：$(suffix src/foo.c src-1.0/bar.c hacks)返回值是".c .c"。
 ```
@@ -1648,9 +1648,9 @@ $(basename <names...> )
 ```
 名称：取前缀函数--basename。
 
-功能：从文件名序列<names>中取出各个文件名的前缀部分。
+功能：从文件名序列&lt;names&gt;中取出各个文件名的前缀部分。
 
-返回：返回文件名序列<names>的前缀序列，如果文件没有前缀，则返回空字串。
+返回：返回文件名序列&lt;names&gt;的前缀序列，如果文件没有前缀，则返回空字串。
 
 示例：$(basename src/foo.c src-1.0/bar.c hacks)返回值是"src/foo src-1.0/bar hacks"。
 ```
@@ -1658,7 +1658,7 @@ $(addsuffix <suffix>,<names...> )
 ```
 名称：加后缀函数--addsuffix。
 
-功能：把后缀<suffix>加到<names>中的每个单词后面。
+功能：把后缀&lt;suffix&gt;加到&lt;names&gt;中的每个单词后面。
 
 返回：返回加过后缀的文件名序列。
 
@@ -1668,7 +1668,7 @@ $(addprefix <prefix>,<names...> )
 ```
 名称：加前缀函数--addprefix。
 
-功能：把前缀<prefix>加到<names>中的每个单词后面。
+功能：把前缀&lt;prefix&gt;加到&lt;names&gt;中的每个单词后面。
 
 返回：返回加过前缀的文件名序列。
 
@@ -1678,7 +1678,7 @@ $(join <list1>,<list2> )
 ```
 名称：连接函数--join。
 
-功能：把<list2>中的单词对应地加到<list1>的单词后面。如果<list1>的单词个数要比<list2>的多，那么，<list1>中的多出来的单词将保持原样。如果<list2>的单词个数要比<list1>多，那么，<list2>多出来的单词将被复制到<list2>中。
+功能：把&lt;list2&gt;中的单词对应地加到&lt;list1&gt;的单词后面。如果&lt;list1&gt;的单词个数要比&lt;list2&gt;的多，那么，&lt;list1&gt;中的多出来的单词将保持原样。如果&lt;list2&gt;的单词个数要比&lt;list1&gt;多，那么，&lt;list2&gt;多出来的单词将被复制到&lt;list2&gt;中。
 
 返回：返回连接过后的字符串。
 
@@ -1690,9 +1690,9 @@ foreach 函数和别的函数非常的不一样。因为这个函数是用来做
 ```
 $(foreach <var>,<list>,<text> )
 ```
-这个函数的意思是，把参数<list>中的单词逐一取出放到参数<var>所指定的变量中，然后再执行<text>所包含的表达式。每一次<text>会返回一个字符串，循环过程中，<text>的所返回的每个字符串会以空格分隔，最后当整个循环结束时，<text>所返回的每个字符串所组成的整个字符串（以空格分隔）将会是foreach函数的返回值。
+这个函数的意思是，把参数&lt;list&gt;中的单词逐一取出放到参数&lt;var&gt;所指定的变量中，然后再执行&lt;text&gt;所包含的表达式。每一次&lt;text&gt;会返回一个字符串，循环过程中，&lt;text&gt;的所返回的每个字符串会以空格分隔，最后当整个循环结束时，&lt;text&gt;所返回的每个字符串所组成的整个字符串（以空格分隔）将会是foreach函数的返回值。
 
-所以，<var>最好是一个变量名，<list>可以是一个表达式，而<text>中一般会使用<var>这个参数来依次枚举<list>中的单词。举个例子：
+所以，&lt;var&gt;最好是一个变量名，&lt;list&gt;可以是一个表达式，而&lt;text&gt;中一般会使用&lt;var&gt;这个参数来依次枚举&lt;list&gt;中的单词。举个例子：
 ```
 names := a b c d
 
@@ -1700,7 +1700,7 @@ files := $(foreach n,$(names),$(n).o)
 ```
 上面的例子中，$(name)中的单词会被挨个取出，并存到变量"n"中，"$(n).o"每次根据"$(n)"计算出一个值，这些值以空格分隔，最后作为foreach函数的返回，所以，$(files)的值是"a.o b.o c.o d.o"。
 
-注意，foreach中的<var>参数是一个临时的局部变量，foreach函数执行完后，参数<var>的变量将不在作用，其作用域只在foreach函数当中。
+注意，foreach中的&lt;var&gt;参数是一个临时的局部变量，foreach函数执行完后，参数&lt;var&gt;的变量将不在作用，其作用域只在foreach函数当中。
 
 #### 五、if 函数
 
@@ -1712,11 +1712,11 @@ $(if <condition>,<then-part> )
 ```
 $(if <condition>,<then-part>,<else-part> )
 ```
-可见，if函数可以包含"else"部分，或是不含。即if函数的参数可以是两个，也可以是三个。<condition>参数是if的表达式，如果其返回的为非空字符串，那么这个表达式就相当于返回真，于是，<then-part>会被计算，否则<else-part> 会被计算。
+可见，if函数可以包含"else"部分，或是不含。即if函数的参数可以是两个，也可以是三个。&lt;condition&gt;参数是if的表达式，如果其返回的为非空字符串，那么这个表达式就相当于返回真，于是，&lt;then-part&gt;会被计算，否则&lt;else-part&gt; 会被计算。
 
-而if函数的返回值是，如果<condition>为真（非空字符串），那个<then- part>会是整个函数的返回值，如果<condition>为假（空字符串），那么<else-part>会是整个函数的返回值，此时如果<else-part>没有被定义，那么，整个函数返回空字串。
+而if函数的返回值是，如果&lt;condition&gt;为真（非空字符串），那个&lt;then- part&gt;会是整个函数的返回值，如果&lt;condition&gt;为假（空字符串），那么&lt;else-part&gt;会是整个函数的返回值，此时如果&lt;else-part&gt;没有被定义，那么，整个函数返回空字串。
 
-所以，<then-part>和<else-part>只会有一个被计算。
+所以，&lt;then-part&gt;和&lt;else-part&gt;只会有一个被计算。
 
 #### 六、call函数
 
@@ -1724,7 +1724,7 @@ call函数是唯一一个可以用来创建新的参数化的函数。你可以�
 ```
 $(call <expression>,<parm1>,<parm2>,<parm3>...)
 ```
-当 make执行这个函数时，<expression>参数中的变量，如$(1)，$(2)，$(3)等，会被参数<parm1>，<parm2>，<parm3>依次取代。而<expression>的返回值就是 call函数的返回值。例如：
+当 make执行这个函数时，&lt;expression&gt;参数中的变量，如$(1)，$(2)，$(3)等，会被参数&lt;parm1&gt;，&lt;parm2&gt;，&lt;parm3&gt;依次取代。而&lt;expression&gt;的返回值就是 call函数的返回值。例如：
 ```
 reverse = $(1) $(2)
 
@@ -1744,35 +1744,35 @@ origin函数不像其它的函数，他并不操作变量的值，他只是告�
 ```
 $(origin <variable> )
 ```
-注意，<variable>是变量的名字，不应该是引用。所以你最好不要在<variable>中使用"$"字符。Origin函数会以其返回值来告诉你这个变量的"出生情况"，下面，是origin函数的返回值:
+注意，&lt;variable&gt;是变量的名字，不应该是引用。所以你最好不要在&lt;variable&gt;中使用"$"字符。Origin函数会以其返回值来告诉你这个变量的"出生情况"，下面，是origin函数的返回值:
 ```
 "undefined"
 ```
-如果<variable>从来没有定义过，origin函数返回这个值"undefined"。
+如果&lt;variable&gt;从来没有定义过，origin函数返回这个值"undefined"。
 ```
 "default"
 ```
-如果<variable>是一个默认的定义，比如"CC"这个变量，这种变量我们将在后面讲述。
+如果&lt;variable&gt;是一个默认的定义，比如"CC"这个变量，这种变量我们将在后面讲述。
 ```
 "environment"
 ```
-如果<variable>是一个环境变量，并且当Makefile被执行时，"-e"参数没有被打开。
+如果&lt;variable&gt;是一个环境变量，并且当Makefile被执行时，"-e"参数没有被打开。
 ```
 "file"
 ```
-如果<variable>这个变量被定义在Makefile中。
+如果&lt;variable&gt;这个变量被定义在Makefile中。
 ```
 "command line"
 ```
-如果<variable>这个变量是被命令行定义的。
+如果&lt;variable&gt;这个变量是被命令行定义的。
 ```
 "override"
 ```
-如果<variable>是被override指示符重新定义的。
+如果&lt;variable&gt;是被override指示符重新定义的。
 ```
 "automatic"
 ```
-如果<variable>是一个命令运行中的自动化变量。关于自动化变量将在后面讲述。
+如果&lt;variable&gt;是一个命令运行中的自动化变量。关于自动化变量将在后面讲述。
 
 这些信息对于我们编写Makefile是非常有用的，例如，假设我们有一个Makefile其包了一个定义文件Make.def，在Make.def中定义了一个变量"bletch"，而我们的环境中也有一个环境变量"bletch"，此时，我们想判断一下，如果变量来源于环境，那么我们就把之重定义了，如果来源于Make.def或是命令行等非环境的，那么我们就不重新定义它。于是，在我们的Makefile中，我们可以这样写：
 ```
@@ -1804,7 +1804,7 @@ make提供了一些函数来控制make的运行。通常，你需要检测一些
 ```
 $(error <text ...> )
 ```
-产生一个致命的错误，<text ...>是错误信息。注意，error函数不会在一被使用就会产生错误信息，所以如果你把其定义在某个变量中，并在后续的脚本中使用这个变量，那么也是可以的。例如：
+产生一个致命的错误，&lt;text ...&gt;是错误信息。注意，error函数不会在一被使用就会产生错误信息，所以如果你把其定义在某个变量中，并在后续的脚本中使用这个变量，那么也是可以的。例如：
 
 示例一：
 ```
@@ -1942,13 +1942,13 @@ all: prog1 prog2 prog3 prog4
 
 这个参数的行为是找目标的意思，也就是说，如果目标存在，那么其什么也不会输出，当然也不会执行编译，如果目标不存在，其会打印出一条出错信息。
 
-"-W <file>"
+"-W &lt;file&gt;"
 
-"--what-if=<file>"
+"--what-if=&lt;file&gt;"
 
-"--assume-new=<file>"
+"--assume-new=&lt;file&gt;"
 
-"--new-file=<file>"
+"--new-file=&lt;file&gt;"
 
 这个参数需要指定一个文件。一般是是源文件（或依赖文件），Make会根据规则推导来运行依赖于这个文件的命令，一般来说，可以和"-n"参数一同使用，来查看这个依赖文件所发生的规则命令。
 
@@ -1970,15 +1970,15 @@ all: prog1 prog2 prog3 prog4
 
 认为所有的目标都需要更新（重编译）。
 
-"-C <dir>"
+"-C &lt;dir&gt;"
 
-"--directory=<dir>"
+"--directory=&lt;dir&gt;"
 
 指定读取makefile的目录。如果有多个"-C"参数，make的解释是后面的路径以前面的作为相对路径，并以最后的目录作为被指定目录。如："make –C ~hchen/test –C prog"等价于"make –C ~hchen/test/prog"。
 
-"-debug[=<options>]"
+"-debug[=&lt;options&gt;]"
 
-输出make的调试信息。它有几种不同的级别可供选择，如果没有参数，那就是输出最简单的调试信息。下面是<options>的取值：
+输出make的调试信息。它有几种不同的级别可供选择，如果没有参数，那就是输出最简单的调试信息。下面是&lt;options&gt;的取值：
 
 a -- 也就是all，输出所有的调试信息。（会非常的多）
 
@@ -2002,11 +2002,11 @@ m -- 也就是makefile，输出make读取makefile，更新makefile，执行makef
 
 指明环境变量的值覆盖makefile中定义的变量的值。
 
-"-f=<file>"
+"-f=&lt;file&gt;"
 
-"--file=<file>"
+"--file=&lt;file&gt;"
 
-"--makefile=<file>"
+"--makefile=&lt;file&gt;"
 
 指定需要执行的makefile。
 
@@ -2022,15 +2022,15 @@ m -- 也就是makefile，输出make读取makefile，更新makefile，执行makef
 
 在执行时忽略所有的错误。
 
-"-I <dir>"
+"-I &lt;dir&gt;"
 
-"--include-dir=<dir>"
+"--include-dir=&lt;dir&gt;"
 
 指定一个被包含makefile的搜索目标。可以使用多个"-I"参数来指定多个目录。
 
-"-j [<jobsnum>]"
+"-j [&lt;jobsnum&gt;]"
 
-"--jobs[=<jobsnum>]"
+"--jobs[=&lt;jobsnum&gt;]"
 
 指同时运行命令的个数。如果没有这个参数，make运行命令时能运行多少就运行多少。如果有一个以上的"-j"参数，那么仅最后一个"-j"才是有效的。（注意这个参数在MS-DOS中是无用的）
 
@@ -2040,11 +2040,11 @@ m -- 也就是makefile，输出make读取makefile，更新makefile，执行makef
 
 出错也不停止运行。如果生成一个目标失败了，那么依赖于其上的目标就不会被执行了。
 
-"-l <load>"
+"-l &lt;load&gt;"
 
 "--load-average[=<load]"
 
-"-max-load[=<load>]"
+"-max-load[=&lt;load&gt;]"
 
 指定make运行命令的负载。
 
@@ -2058,11 +2058,11 @@ m -- 也就是makefile，输出make读取makefile，更新makefile，执行makef
 
 仅输出执行过程中的命令序列，但并不执行。
 
-"-o <file>"
+"-o &lt;file&gt;"
 
-"--old-file=<file>"
+"--old-file=&lt;file&gt;"
 
-"--assume-old=<file>"
+"--assume-old=&lt;file&gt;"
 
 不重新生成的指定的<file>，即使这个目标的依赖文件新于它。
 
@@ -2128,15 +2128,15 @@ m -- 也就是makefile，输出make读取makefile，更新makefile，执行makef
 
 禁止"-w"选项。
 
-"-W <file>"
+"-W &lt;file&gt;"
 
-"--what-if=<file>"
+"--what-if=&lt;file&gt;"
 
-"--new-file=<file>"
+"--new-file=&lt;file&gt;"
 
-"--assume-file=<file>"
+"--assume-file=&lt;file&gt;"
 
-假定目标<file>需要更新，如果和"-n"选项使用，那么这个参数会输出该目标更新时的运行动作。如果没有"-n"那么就像运行UNIX的"touch"命令一样，使得<file>的修改时间为当前时间。
+假定目标&lt;file&gt;需要更新，如果和"-n"选项使用，那么这个参数会输出该目标更新时的运行动作。如果没有"-n"那么就像运行UNIX的"touch"命令一样，使得&lt;file&gt;的修改时间为当前时间。
 
 "--warn-undefined-variables"
 
@@ -2196,19 +2196,19 @@ foo.o : foo.p
 
 1、编译C程序的隐含规则。
 
-"<n>.o"的目标的依赖目标会自动推导为"<n>.c"，并且其生成命令是"$(CC) –c $(CPPFLAGS) $(CFLAGS)"
+"&lt;n&gt;.o"的目标的依赖目标会自动推导为"&lt;n&gt;.c"，并且其生成命令是"$(CC) –c $(CPPFLAGS) $(CFLAGS)"
 
 2、编译C++程序的隐含规则。
 
-"<n>.o" 的目标的依赖目标会自动推导为"<n>.cc"或是"<n>.C"，并且其生成命令是"$(CXX) –c $(CPPFLAGS) $(CFLAGS)"。（建议使用".cc"作为C++源文件的后缀，而不是".C"）
+"&lt;n&gt;.o" 的目标的依赖目标会自动推导为"&lt;n&gt;.cc"或是"&lt;n&gt;.C"，并且其生成命令是"$(CXX) –c $(CPPFLAGS) $(CFLAGS)"。（建议使用".cc"作为C++源文件的后缀，而不是".C"）
 
 3、编译Pascal程序的隐含规则。
 
-"<n>.o"的目标的依赖目标会自动推导为"<n>.p"，并且其生成命令是"$(PC) –c $(PFLAGS)"。
+"&lt;n&gt;.o"的目标的依赖目标会自动推导为"&lt;n&gt;.p"，并且其生成命令是"$(PC) –c $(PFLAGS)"。
 
 4、编译Fortran/Ratfor程序的隐含规则。
 
-"<n>.o"的目标的依赖目标会自动推导为"<n>.r"或"<n>.F"或"<n>.f"，并且其生成命令是:
+"&lt;n&gt;.o"的目标的依赖目标会自动推导为"&lt;n&gt;.r"或"&lt;n&gt;.F"或"&lt;n&gt;.f"，并且其生成命令是:
 
 ".f" "$(FC) –c $(FFLAGS)"
 
@@ -2218,7 +2218,7 @@ foo.o : foo.p
 
 5、预处理Fortran/Ratfor程序的隐含规则。
 
-"<n>.f"的目标的依赖目标会自动推导为"<n>.r"或"<n>.F"。这个规则只是转换Ratfor或有预处理的Fortran程序到一个标准的Fortran程序。其使用的命令是：
+"&lt;n&gt;.f"的目标的依赖目标会自动推导为"&lt;n&gt;.r"或"&lt;n&gt;.F"。这个规则只是转换Ratfor或有预处理的Fortran程序到一个标准的Fortran程序。其使用的命令是：
 
 ".F" "$(FC) –F $(CPPFLAGS) $(FFLAGS)"
 
@@ -2226,15 +2226,15 @@ foo.o : foo.p
 
 6、编译Modula-2程序的隐含规则。
 
-"<n>.sym" 的目标的依赖目标会自动推导为"<n>.def"，并且其生成命令是："$(M2C) $(M2FLAGS) $(DEFFLAGS)"。"<n.o>" 的目标的依赖目标会自动推导为"<n>.mod"，并且其生成命令是："$(M2C) $(M2FLAGS) $(MODFLAGS)"。
+"&lt;n&gt;.sym" 的目标的依赖目标会自动推导为"&lt;n&gt;.def"，并且其生成命令是："$(M2C) $(M2FLAGS) $(DEFFLAGS)"。"&lt;n.o&gt;" 的目标的依赖目标会自动推导为"&lt;n&gt;.mod"，并且其生成命令是："$(M2C) $(M2FLAGS) $(MODFLAGS)"。
 
 7、汇编和汇编预处理的隐含规则。
 
-"<n>.o" 的目标的依赖目标会自动推导为"<n>.s"，默认使用编译品"as"，并且其生成命令是："$(AS) $(ASFLAGS)"。"<n>.s" 的目标的依赖目标会自动推导为"<n>.S"，默认使用C预编译器"cpp"，并且其生成命令是："$(AS) $(ASFLAGS)"。
+"&lt;n&gt;.o" 的目标的依赖目标会自动推导为"&lt;n&gt;.s"，默认使用编译品"as"，并且其生成命令是："$(AS) $(ASFLAGS)"。"&lt;n&gt;.s" 的目标的依赖目标会自动推导为"&lt;n&gt;.S"，默认使用C预编译器"cpp"，并且其生成命令是："$(AS) $(ASFLAGS)"。
 
 8、链接Object文件的隐含规则。
 
-"<n>" 目标依赖于"<n>.o"，通过运行C的编译器来运行链接程序生成（一般是"ld"），其生成命令是："$(CC) $(LDFLAGS) <n>.o $(LOADLIBES) $(LDLIBS)"。这个规则对于只有一个源文件的工程有效，同时也对多个Object文件（由不同的源文件生成）的也有效。例如如下规则：
+"&lt;n&gt;" 目标依赖于"&lt;n&gt;.o"，通过运行C的编译器来运行链接程序生成（一般是"ld"），其生成命令是："$(CC) $(LDFLAGS) &lt;n&gt;.o $(LOADLIBES) $(LDLIBS)"。这个规则对于只有一个源文件的工程有效，同时也对多个Object文件（由不同的源文件生成）的也有效。例如如下规则：
 
 x : y.o z.o
 
@@ -2260,19 +2260,19 @@ rm -f z.o
 
 9、Yacc C程序时的隐含规则。
 
-"<n>.c"的依赖文件被自动推导为"n.y"（Yacc生成的文件），其生成命令是："$(YACC) $(YFALGS)"。（"Yacc"是一个语法分析器，关于其细节请查看相关资料）
+"&lt;n&gt;.c"的依赖文件被自动推导为"n.y"（Yacc生成的文件），其生成命令是："$(YACC) $(YFALGS)"。（"Yacc"是一个语法分析器，关于其细节请查看相关资料）
 
 10、Lex C程序时的隐含规则。
 
-"<n>.c"的依赖文件被自动推导为"n.l"（Lex生成的文件），其生成命令是："$(LEX) $(LFALGS)"。（关于"Lex"的细节请查看相关资料）
+"&lt;n&gt;.c"的依赖文件被自动推导为"n.l"（Lex生成的文件），其生成命令是："$(LEX) $(LFALGS)"。（关于"Lex"的细节请查看相关资料）
 
 11、Lex Ratfor程序时的隐含规则。
 
-"<n>.r"的依赖文件被自动推导为"n.l"（Lex生成的文件），其生成命令是："$(LEX) $(LFALGS)"。
+"&lt;n&gt;.r"的依赖文件被自动推导为"n.l"（Lex生成的文件），其生成命令是："$(LEX) $(LFALGS)"。
 
 12、从C程序、Yacc文件或Lex文件创建Lint库的隐含规则。
 
-"<n>.ln" （lint生成的文件）的依赖文件被自动推导为"n.c"，其生成命令是："$(LINT) $(LINTFALGS) $(CPPFLAGS) -i"。对于"<n>.y"和"<n>.l"也是同样的规则。
+"&lt;n&gt;.ln" （lint生成的文件）的依赖文件被自动推导为"n.c"，其生成命令是："$(LINT) $(LINTFALGS) $(CPPFLAGS) -i"。对于"&lt;n&gt;.y"和"&lt;n&gt;.l"也是同样的规则。
 
 #### 三、隐含规则使用的变量
 
@@ -2448,7 +2448,7 @@ Make 会优化一些特殊的隐含规则，而不生成中间文件。如，从
 
 如果"%"定义在目标中，那么，目标中的"%"的值决定了依赖目标中的"%"的值，也就是说，目标中的模式的"%"决定了依赖目标中"%"的样子。例如有一个模式规则如下：
 
-%.o : %.c ; <command ......>
+%.o : %.c ; &lt;command ......&gt;
 
 其含义是，指出了怎么从所有的[.c]文件生成相应的[.o]文件的规则。如果要生成的目标是"a.o b.o"，那么"%c"就是"a.c b.c"。
 
@@ -2470,7 +2470,7 @@ $(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
 
 bison -d $<
 
-这条规则告诉make把所有的[.y]文件都以"bison -d <n>.y"执行，然后生成"<n>.tab.c"和"<n>.tab.h"文件。（其中，"<n>" 表示一个任意字符串）。如果我们的执行程序"foo"依赖于文件"parse.tab.o"和"scan.o"，并且文件"scan.o"依赖于文件"parse.tab.h"，如果"parse.y"文件被更新了，那么根据上述的规则，"bison -d parse.y"就会被执行一次，于是，"parse.tab.o"和"scan.o"的依赖文件就齐了。（假设，"parse.tab.o" 由"parse.tab.c"生成，和"scan.o"由"scan.c"生成，而"foo"由"parse.tab.o"和"scan.o"链接生成，而且foo和其[.o]文件的依赖关系也写好，那么，所有的目标都会得到满足）
+这条规则告诉make把所有的[.y]文件都以"bison -d &lt;n&gt;.y"执行，然后生成"&lt;n&gt;.tab.c"和"&lt;n&gt;.tab.h"文件。（其中，"&lt;n&gt;" 表示一个任意字符串）。如果我们的执行程序"foo"依赖于文件"parse.tab.o"和"scan.o"，并且文件"scan.o"依赖于文件"parse.tab.h"，如果"parse.y"文件被更新了，那么根据上述的规则，"bison -d parse.y"就会被执行一次，于是，"parse.tab.o"和"scan.o"的依赖文件就齐了。（假设，"parse.tab.o" 由"parse.tab.c"生成，和"scan.o"由"scan.c"生成，而"foo"由"parse.tab.o"和"scan.o"链接生成，而且foo和其[.o]文件的依赖关系也写好，那么，所有的目标都会得到满足）
 
 3、自动化变量
 
