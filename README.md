@@ -16,3 +16,5 @@
 [cc命令解说](https://github.com/KobeGong/notes/blob/master/cc%E5%91%BD%E4%BB%A4%E8%A7%A3%E8%AF%B4.md)
 
 [adb_root](https://github.com/KobeGong/notes/blob/master/adb_root.md)
+
+[Android App 线上热修复方案](https://github.com/KobeGong/notes/blob/master/Dexposed%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95.md)
