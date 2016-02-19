@@ -17,4 +17,4 @@
 
 [adb_root](https://github.com/KobeGong/notes/blob/master/adb_root.md)
 
-[Android App 线上热修复方案](https://github.com/KobeGong/notes/blob/master/Dexposed%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95.md)
+[Dexposed学习记录](https://github.com/KobeGong/notes/blob/master/Dexposed%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95.md)
