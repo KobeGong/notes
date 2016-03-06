@@ -1,0 +1,20 @@
+小站erp接口结论：
+http://erp.zhan.com/Teaching/TeacherLesson?teacherId=1736，获取指定老师的课程表的html片段
+http://erp.zhan.com/Teaching/FeedBack/SignIn
+{ "lessonId": id, "time": time }
+ErpTeacherLessonView.SignIn(802116, '2016/3/6 10:00:00')
+
+http://erp.zhan.com/Teaching/TeacherManager/GetMainSubject 获取课程信息
+<option value="867">雅思外教口语</option> 
+<option value="2">托福</option>
+<option value="3">雅思</option>
+<option value="116">SAT</option>
+<option value="139">GRE</option>
+<option value="200">ACT</option>
+<option value="686">XSAT</option>
+<option value="770">SSAT</option>
+<option value="771">GMAT</option>
+<option value="856">其他</option>
+
+/Teaching/TeacherLesson/TeachLessonSource
+http://erp.zhan.com/Teaching/TeacherLesson/TeachLessonSource?rand=0.9484921237453818&PageId=20
