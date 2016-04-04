@@ -18,3 +18,7 @@
 [adb_root](https://github.com/KobeGong/notes/blob/master/adb_root.md)
 
 [Dexposed学习记录](https://github.com/KobeGong/notes/blob/master/Dexposed%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95.md)
+
+[Binder笔记](https://github.com/KobeGong/notes/blob/master/Binder%E7%AC%94%E8%AE%B0.md)
+
+[adb wireless方法](https://github.com/KobeGong/notes/blob/master/adb_wireless.md)
