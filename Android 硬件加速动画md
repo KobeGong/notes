@@ -1,0 +1,3 @@
+# Android 硬件加速动画
+
+Animator.cpp animate(AnimationContext& context) 在这个方法中计算动画的当前参数。
