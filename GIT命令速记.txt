@@ -1,0 +1,4 @@
+1.查看某一revison的文件
+git show revison:file/to/file
+
+2.
